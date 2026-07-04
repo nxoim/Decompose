@@ -90,17 +90,17 @@ fun <Ctx : GenericComponentContext<Ctx>, MC : Any, MT : Any, DC : Any, DT : Any>
  * @return an observable [Value] of [ChildPanels].
  */
 @ExperimentalDecomposeApi
-fun <Ctx : GenericComponentContext<Ctx>, MC : Any, MT : Any, DC : Any, DT : Any, EC : Any, ET : Any> Ctx.childPanels(
-    source: NavigationSource<Event<MC, DC, EC>>,
-    initialPanels: () -> Panels<MC, DC, EC>,
-    savePanels: (Panels<MC, DC, EC>) -> SerializableContainer?,
-    restorePanels: (SerializableContainer) -> Panels<MC, DC, EC>?,
+fun <Ctx : GenericComponentContext<Ctx>, MC : Any, MT : Any, DC : Any, DT : Any> Ctx.childPanels(
+    source: NavigationSource<Event<MC, DC, Nothing>>,
+    initialPanels: () -> Panels<MC, DC, Nothing>,
+    savePanels: (Panels<MC, DC, Nothing>) -> SerializableContainer?,
+    restorePanels: (SerializableContainer) -> Panels<MC, DC, Nothing>?,
     key: String = "DefaultChildPanels",
-    onStateChanged: (newState: Panels<MC, DC, EC>, oldState: Panels<MC, DC, EC>?) -> Unit = { _, _ -> },
+    onStateChanged: (newState: Panels<MC, DC, Nothing>, oldState: Panels<MC, DC, Nothing>?) -> Unit = { _, _ -> },
     handleBackButton: Boolean = false,
     mainFactory: (configuration: MC, Ctx) -> MT,
     detailsFactory: (configuration: DC, Ctx) -> DT,
-): Value<ChildPanels<MC, MT, DC, DT, EC, ET>> =
+): Value<ChildPanels<MC, MT, DC, DT, Nothing, Nothing>> =
     childPanels(
         source = source,
         initialPanels = initialPanels,
