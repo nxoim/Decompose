@@ -9,7 +9,7 @@ import kotlinx.serialization.KSerializer
  * A contract for saving and restoring navigation states.
  */
 @ExperimentalDecomposeApi
-interface NavStateSaver<T : Any> {
+interface NavStateSaver<T> {
 
     /**
      * Saves the provided navigation state into [SerializableContainer].
@@ -33,7 +33,7 @@ interface NavStateSaver<T : Any> {
  * with the provided [save] and [restore] functions.
  */
 @ExperimentalDecomposeApi
-inline fun <T : Any> NavStateSaver(
+inline fun <T> NavStateSaver(
     crossinline save: (T) -> SerializableContainer?,
     crossinline restore: (SerializableContainer) -> T?,
 ): NavStateSaver<T> =
@@ -47,8 +47,12 @@ inline fun <T : Any> NavStateSaver(
  * that saves and restores the navigation state using the provided [serializer].
  */
 @ExperimentalDecomposeApi
-fun <T : Any> NavStateSaver(serializer: KSerializer<T>): NavStateSaver<T> =
+fun <T> NavStateSaver(serializer: KSerializer<T & Any>): NavStateSaver<T> =
     NavStateSaver(
-        save = { SerializableContainer(value = it, strategy = serializer) },
-        restore = { it.consume(strategy = serializer) },
+        save = {
+            SerializableContainer(value = it, strategy = serializer)
+        },
+        restore = {
+            it.consume(strategy = serializer)
+        },
     )
