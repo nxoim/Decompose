@@ -68,7 +68,7 @@ Author: [@Litun](https://github.com/Litun)
 
 ### CAIF
 
-An alternative Compose Multiplatform animation framework, with first party Decompose integration, enabling smooth navigation transitions and easy, flexible configuration.
+An alternative Compose Multiplatform animation framework, with first-party Decompose integration, enabling smooth navigation transitions and easy, flexible configuration.
 
 Link: [github.com/nxoim/caif](https://github.com/nxoim/caif)
 
