@@ -66,7 +66,7 @@ Link: [github.com/Litun/DecomposeClaudePlugin](https://github.com/Litun/Decompos
 
 Author: [@Litun](https://github.com/Litun)
 
-### CAIF
+### CAIF - Compose Animated Interactions Framework
 
 An alternative Compose Multiplatform animation framework, with first-party Decompose integration, enabling smooth navigation transitions and easy, flexible configuration.
 
